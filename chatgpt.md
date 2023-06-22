@@ -434,3 +434,36 @@ def test_no_scoring_dice_with_three_pairs():
     actual = GameLogic.calculate_score((2, 2, 3, 3, 4, 4))
     expected = 1500
     assert actual == expected`
+
+
+## Prompt 4
+
+when building a python cli game of farkle, how do I bank the current score 
+
+## Code Output 4
+
+Create a variable to hold the current score, initialized to zero at the beginning of the game. For example:
+python
+Copy code
+current_score = 0
+During the game, the player accumulates points based on their dice rolls. When they decide to bank their current score, you need to add the current score to their total score and reset the current score to zero. You can use a function to handle this logic. Here's an example:
+python
+Copy code
+def bank_score(total_score, current_score):
+    total_score += current_score
+    current_score = 0
+    return total_score, current_score
+Whenever the player chooses to bank their score, you can call the bank_score function and update the variables accordingly. For example:
+python
+Copy code
+total_score, current_score = bank_score(total_score, current_score)
+Here, total_score represents the player's cumulative score throughout the game.
+
+You might also want to add some validation to ensure the player can only bank their score when they have accumulated points. For instance, you can include a check before calling the bank_score function:
+python
+Copy code
+if current_score > 0:
+    total_score, current_score = bank_score(total_score, current_score)
+else:
+    print("You can only bank your score when you have points to bank.")
+By following these steps, you can implement the banking of the current score in your Python CLI game of Farkle. Remember to adapt the code to fit within the structure and rules of your specific game implementation.
