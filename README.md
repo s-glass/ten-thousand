@@ -57,3 +57,47 @@ No external libraries were brought in.
 ## Tests
 
 All acceptance testing run through test_series.py file and pytest following TDD.
+
+--------------------------------------------
+
+# Lab - Class 07
+
+## Project: ten-thousand
+
+Author: Sarah Glass, Logan Reese, and Slava Makeev for Python 401
+
+## Overview
+
+Create a command line version of the dice game Ten Thousand.
+
+Extend Ten Thousand game started in previous class to get the game in playable state.
+
+Application should implement all features from previous version
+Application should allow user to set aside dice each roll
+Application should allow “banking” current score or rolling again.
+Application should keep track of total score
+Application should keep track of current round
+
+
+## Links and Resources
+
+- Lots of TA and peer help.
+- Referenced class demo
+- Chat GPT - prompts and output are documented in the "chatgpt.md" file
+
+## Setup
+
+No .env requirements; gitignore invludes venv.
+
+## How to initialize/run your application
+
+- python3 game_logic.py
+- python3 game.py
+
+## How to use your library
+
+The library we brought in is flo.py
+
+## Tests
+
+All acceptance testing run through test_series.py file and pytest following TDD.
