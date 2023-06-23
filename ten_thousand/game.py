@@ -39,8 +39,44 @@ def play_dice(num_rounds):
             if choice == "q":
               print("Thanks for playing. You earned 0 points")
               break
-     
 
+## From Chat GPT
+# def play_dice(num_rounds):
+#     round_num = 1
+#     total_score = 0
+
+#     while round_num <= num_rounds:
+#         print(f"Starting round {round_num}")
+#         print("Rolling 6 dice...")
+#         roll = dice_roller(6)
+#         roll_str = " ".join(str(num) for num in roll)
+#         print(f"*** {roll_str} ***")
+
+#         print("Enter dice to keep, or (q)uit:")
+#         choice = input("> ")
+
+#         if choice == "q":
+#             print(f"Thanks for playing. You earned {total_score} points")
+#             break
+
+#         # Calculate the score for the chosen dice
+#         dice_roll_points = GameLogic.calculate_score(choice)
+
+#         print(f"You have {dice_roll_points} unbanked points and {6 - len(choice)} dice remaining")
+#         print("(r)oll again, (b)ank your points or (q)uit:")
+#         action = input("> ")
+
+#         if action == "b":
+#             total_score += dice_roll_points
+#             print(f"You banked {dice_roll_points} points in round {round_num}")
+#             print(f"Total score is {total_score} points")
+#             round_num += 1
+#         elif action == "q":
+#             print(f"Thanks for playing. You earned {total_score} points")
+#             break
+
+#     if round_num > num_rounds:
+#         print(f"You completed {num_rounds} rounds. Final score: {total_score} points")
 
 
 

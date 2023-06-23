@@ -101,3 +101,52 @@ The library we brought in is flo.py
 ## Tests
 
 All acceptance testing run through test_series.py file and pytest following TDD.
+
+
+-----------------------------------------------
+
+# Lab - Class 08
+
+## Project: ten-thousand
+
+Author: Sarah Glass, Logan Reese, and Slava Makeev for Python 401
+
+## Overview
+
+Create a command line version of the dice game Ten Thousand.
+
+Let’s shore up the core functionality of game by allowing users to set aside scoring dice and continuing their turn.
+
+Then we’ll handle cheaters and/or confused players who are skirting the rules.
+
+-Application should implement features from versions 1 and 2
+-Should handle setting aside scoring dice and continuing turn with remaining dice.
+-Should handle when cheating occurs.
+Or just typos.
+E.g. roll = [1,3,5,2] and user selects 1, 1, 1, 1, 1, 1
+-Should allow user to continue rolling with 6 new dice when all dice have scored in current turn.
+-Handle zilch
+-No points for round, and round is over
+
+## Links and Resources
+
+- Lots of TA and peer help.
+- Referenced class demo
+- Chat GPT - prompts and output are documented in the "chatgpt.md" file
+
+## Setup
+
+No .env requirements; gitignore invludes venv.
+
+## How to initialize/run your application
+
+- python3 game_logic.py
+- python3 game.py
+
+## How to use your library
+
+The library we brought in is flo.py
+
+## Tests
+
+All acceptance testing run through test_series.py file and pytest following TDD.
