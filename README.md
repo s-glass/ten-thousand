@@ -140,8 +140,7 @@ No .env requirements; gitignore invludes venv.
 
 ## How to initialize/run your application
 
-- python3 game_logic.py
-- python3 game.py
+- python3 ten_thousand.game
 
 ## How to use your library
 
@@ -149,4 +148,4 @@ The library we brought in is flo.py
 
 ## Tests
 
-All acceptance testing run through test_series.py file and pytest following TDD.
+We are working our way through testing. Console will bank and carry over points, but currenlty won't accept more than one die's points at a time.
