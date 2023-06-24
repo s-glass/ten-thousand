@@ -6,12 +6,10 @@ from ten_thousand.game_logic import GameLogic
 class GameLogic:
     @staticmethod
     def roll_dice(num_dice):
-        print('inside the roll dice function. num_dice= ', num_dice)
         dice_values = []
         for _ in range(num_dice):
             value = random.randint(1, 6)
             dice_values.append(value)
-        print('dice_values: ', dice_values)
         return tuple(dice_values)
 
     @staticmethod
@@ -67,28 +65,27 @@ def play(roller=GameLogic.roll_dice, num_rounds=6):
     else:
         print("OK. Maybe another time")
 
-def start_new_round(round):
-    print(f"Starting round {round}")
-    print('Rolling 6 dice...')
+def start_new_round(round_num, dice_to_roll):
+    print(f"Starting round {round_num}")
+  
 
 
+
+dice_to_keep = []
 
 def play_dice(num_rounds):
+    global dice_to_keep
     round_num = 1
     total_points = 0
     banker = Banker()
-    start_new_round(round_num)
-    dice_to_keep = []
+    dice_to_roll = 6  # Start with 6 dice
 
     while round_num <= num_rounds:
-        # print(f"Starting round {round_num}")
-        # print('Rolling 6 dice...')
-        dice_to_roll = 6-len(dice_to_keep)
-        # print('dice_to_roll ', dice_to_roll)
+        dice_to_keep.clear()
+        start_new_round(round_num, dice_to_roll)  # Moved the call here
+
         roll = dice_roller(dice_to_roll)
-        # roll_str = " ".join(map(str, roll))
         stringified_value = [str(value) for value in roll]
-        # print('stringified_value is', stringified_value)
         formatted_roll = " ".join(stringified_value)
         print(f"*** {formatted_roll} ***")
 
@@ -98,12 +95,14 @@ def play_dice(num_rounds):
         if choice == "q":
             print(f"Thanks for playing. You earned {total_points} points")
             break
-            
+
         for die in choice:
             if die.isdigit() and int(die) in roll:
                 dice_to_keep.append(int(die))
-                print('type of dice_to_keep' , dice_to_keep)
-        
+
+        dice_to_roll -= len(dice_to_keep)
+        remaining_dice = [die for die in roll if die not in dice_to_keep]
+
         round_points = GameLogic.calculate_score(dice_to_keep)
 
         if not dice_to_keep:
@@ -111,14 +110,15 @@ def play_dice(num_rounds):
         else:
             total_points += round_points
             banker.shelf(round_points)
-            print(f"You have {banker.shelved} unbanked points and {6 - len(dice_to_keep)} dice remaining")
-           
+            print(f"You have {banker.shelved} unbanked points and {dice_to_roll} dice remaining")
 
             print("(r)oll again, (b)ank your points or (q)uit:")
             action = input("> ")
 
             if action == "r":
-                print(f"Rolling {6 - len(dice_to_keep)} dice...")
+                dice_to_roll = 6 - len(dice_to_keep)  # Update the number of dice to roll
+                print(f"Rolling {dice_to_roll} dice...")
+                round_num += 1  # Increment round_num
                 continue
             elif action == "b":
                 deposited = banker.bank()
